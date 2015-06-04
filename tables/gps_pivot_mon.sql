@@ -1,0 +1,141 @@
+ALTER TABLE NAVIGATOR.GPS_PIVOT_MON
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE NAVIGATOR.GPS_PIVOT_MON CASCADE CONSTRAINTS;
+
+CREATE TABLE NAVIGATOR.GPS_PIVOT_MON
+(
+  GPS_MONTH  DATE                               NOT NULL,
+  DEVICEID   NUMBER                             NOT NULL,
+  GAR_SCOD   NUMBER,
+  D1         NUMBER(6),
+  D2         NUMBER(6),
+  D3         NUMBER(6),
+  D4         NUMBER(6),
+  D5         NUMBER(6),
+  D6         NUMBER(6),
+  D7         NUMBER(6),
+  D8         NUMBER(6),
+  D9         NUMBER(6),
+  D10        NUMBER(6),
+  D11        NUMBER(6),
+  D12        NUMBER(6),
+  D13        NUMBER(6),
+  D14        NUMBER(6),
+  D15        NUMBER(6),
+  D16        NUMBER(6),
+  D17        NUMBER(6),
+  D18        NUMBER(6),
+  D19        NUMBER(6),
+  D20        NUMBER(6),
+  D21        NUMBER(6),
+  D22        NUMBER(6),
+  D23        NUMBER(6),
+  D24        NUMBER(6),
+  D25        NUMBER(6),
+  D26        NUMBER(6),
+  D27        NUMBER(6),
+  D28        NUMBER(6),
+  D29        NUMBER(6),
+  D30        NUMBER(6),
+  D31        NUMBER(6),
+  SM         NUMBER(9)
+)
+TABLESPACE NAVITBS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX NAVIGATOR.GPS_PIVOT_MON_PK ON NAVIGATOR.GPS_PIVOT_MON
+(GPS_MONTH, DEVICEID, GAR_SCOD)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.GPS_PIVOT_MON_GAR_IDX ON NAVIGATOR.GPS_PIVOT_MON
+(GAR_SCOD)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.GPS_PIVOT_MON_MONTH_IDX ON NAVIGATOR.GPS_PIVOT_MON
+(GPS_MONTH)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.GPS_PIVOT_MON_DEVID_IDX ON NAVIGATOR.GPS_PIVOT_MON
+(DEVICEID)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE NAVIGATOR.GPS_PIVOT_MON ADD (
+  CONSTRAINT GPS_PIVOT_MON_PK
+  PRIMARY KEY
+  (GPS_MONTH, DEVICEID, GAR_SCOD)
+  USING INDEX NAVIGATOR.GPS_PIVOT_MON_PK
+  ENABLE VALIDATE);

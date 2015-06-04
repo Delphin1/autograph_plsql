@@ -1,0 +1,68 @@
+ALTER TABLE NAVIGATOR.CARLISTTMP
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE NAVIGATOR.CARLISTTMP CASCADE CONSTRAINTS;
+
+CREATE TABLE NAVIGATOR.CARLISTTMP
+(
+  ID       NUMBER                               NOT NULL,
+  TMP_STR  VARCHAR2(200 BYTE)
+)
+TABLESPACE NAVITBS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX NAVIGATOR.CL_PK ON NAVIGATOR.CARLISTTMP
+(ID)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE OR REPLACE TRIGGER NAVIGATOR.carlisttmp_ins_date
+  before insert ON NAVIGATOR.CARLISTTMP
+  for each row
+declare
+         crdid number;
+
+begin
+    select SEQ_CARLISTTMP.nextval into crdid from dual;
+   :new.id := crdid;
+
+end ;
+/
+
+
+ALTER TABLE NAVIGATOR.CARLISTTMP ADD (
+  CONSTRAINT CL_PK
+  PRIMARY KEY
+  (ID)
+  USING INDEX NAVIGATOR.CL_PK
+  ENABLE VALIDATE);

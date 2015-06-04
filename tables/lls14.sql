@@ -1,0 +1,186 @@
+DROP TABLE NAVIGATOR.LLS14 CASCADE CONSTRAINTS;
+
+CREATE TABLE NAVIGATOR.LLS14
+(
+  DEVICEID      NUMBER                          NOT NULL,
+  FLAGSID       NUMBER                          NOT NULL,
+  DATADATETIME  VARCHAR2(30 BYTE),
+  VALIDTIME     NUMBER(1)                       NOT NULL,
+  LLS1          NUMBER                          NOT NULL,
+  VALIDLLS1     NUMBER(1)                       NOT NULL,
+  LLS2          NUMBER                          NOT NULL,
+  VALIDLLS2     NUMBER(1)                       NOT NULL,
+  LLS3          NUMBER                          NOT NULL,
+  VALIDLLS3     NUMBER(1)                       NOT NULL,
+  LLS4          NUMBER                          NOT NULL,
+  VALIDLLS4     NUMBER(1)                       NOT NULL,
+  GDATE         DATE,
+  LLS1_L        NUMBER,
+  LLS2_L        NUMBER,
+  DATE5         DATE,
+  DATE1         DATE,
+  DDATE         DATE
+)
+TABLESPACE NAVITBS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOLOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE INDEX NAVIGATOR.LLS14_DDATE_IDX ON NAVIGATOR.LLS14
+(DDATE)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL
+REVERSE;
+
+
+CREATE INDEX NAVIGATOR.LLS14_DEVICEID_IDX ON NAVIGATOR.LLS14
+(DEVICEID)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_GDATE5_IDX ON NAVIGATOR.LLS14
+(DATE5)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_VALIDTIME_IDX ON NAVIGATOR.LLS14
+(VALIDTIME)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_GDATE_IDX_DESC ON NAVIGATOR.LLS14
+("GDATE" DESC)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_VALIDLLS1_IDX ON NAVIGATOR.LLS14
+(VALIDLLS1)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_VALIDLLS2_IDX ON NAVIGATOR.LLS14
+(VALIDLLS2)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE INDEX NAVIGATOR.LLS14_GDATE_IDX_ASC ON NAVIGATOR.LLS14
+(GDATE)
+LOGGING
+TABLESPACE NAVITBS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
